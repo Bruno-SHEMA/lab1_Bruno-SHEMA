@@ -30,6 +30,44 @@ def load_csv_data():
     except Exception as e:
         print(f"An error occurred while reading the file: {e}")
         sys.exit(1)
+    with open(filename, mode='r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+
+        assignments = list(reader)
+
+        if reader.fieldnames is None:
+            print("grades.csv is empty.")
+            print("Please enter assignment data...")
+
+            assignments = []
+
+            while True:
+                assignment = input("Assignment name: ")
+                group = input("Group (Formative/Summative): ")
+                score = float(input("Score: "))
+                weight = float(input("Weight: "))
+
+                assignments.append({
+                    "assignment": assignment,
+                    "group": group,
+                    "score": score,
+                    "weight": weight
+                })
+
+                again = input("Do you want to record another assignment? (y/n): ").lower()
+
+                if again != "y":
+                    break
+    with open(filename, "w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=["assignment", "group", "score", "weight"]
+        )
+
+        writer.writeheader()
+        writer.writerows(assignments)
+
+    return assignments
 
 def evaluate_grades(data):
     """
