@@ -10,8 +10,8 @@ def load_csv_data():
     filename = input("Enter the name of the CSV file to process (e.g., grades.csv): ")
     
     if not os.path.exists(filename):
-        print(f"Error: The file '{filename}' was not found. Please first run the bash file to create a grades.csv file. Use command `bash organizer.sh`")
-        sys.exit(1)
+        print(f"Error: The file '{filename}' was not found.")
+        # sys.exit(1)
         
     assignments = []
     
