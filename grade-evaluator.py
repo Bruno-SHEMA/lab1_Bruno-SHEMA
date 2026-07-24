@@ -26,7 +26,7 @@ def load_csv_data():
                     'score': float(row['score']),
                     'weight': float(row['weight'])
                 })
-        return assignments
+#        return assignments
     except Exception as e:
         print(f"An error occurred while reading the file: {e}")
         sys.exit(1)
