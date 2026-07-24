@@ -17,6 +17,7 @@ original="grades.csv"
 if [ ! -f "$original" ]; then
     touch grades.csv
 fi
+
 new_name="grades_${timestamp}.csv"
 
 
@@ -33,8 +34,6 @@ if [ -f "$original" ]; then
 
     echo "Timestamp: $timestamp | Original: $original | Archived: $new_name" >> organizer.log
 
-
-    echo "Grades archived successfully"
     # creating a new eempty grades.csv
     touch grades.csv
 
