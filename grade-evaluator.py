@@ -41,7 +41,7 @@ def load_csv_data():
 
         assignments = list(reader)
 
-        if reader.fieldnames is None:
+        if len(assignments)==0:
             print("grades.csv is empty.")
             print("Please enter assignment data...")
 
@@ -207,6 +207,8 @@ def evaluate_grades(data):
             choosen = input(f"which one do you want to resubmit between: {resubmit_assignment}")
             if len(choosen) != 0:
                 new_score = input(f"Enter New score for{choosen}")
+                print("Ooops, Sorry resubmission is not available at the moment, try again later!")
+                return
         else:
             return
 if __name__ == "__main__":
