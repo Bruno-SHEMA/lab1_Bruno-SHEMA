@@ -10,8 +10,14 @@ def load_csv_data():
     filename = input("Enter the name of the CSV file to process (e.g., grades.csv): ")
     
     if not os.path.exists(filename):
-        print(f"Error: The file '{filename}' was not found.")
+        print(f"Error: The file '{filename}' was not found, Creating it now!!")
         # sys.exit(1)
+        with open(filename, "w", newline="", encoding="utf-8") as file:
+            writer = csv.DictWriter(
+                file,
+                fieldnames=["assignment", "group", "score", "weight"]
+            )
+            writer.writeheader()
         
     assignments = []
     
